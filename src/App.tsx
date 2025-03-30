@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import { FileList } from "./FileList";
+import { File } from "akar-icons";
 
 function App() {
   const [files, setFiles] = React.useState<FileList | null>(null);
@@ -15,6 +16,7 @@ function App() {
         className="drop-zone"
         onClick={() => document.getElementById("file-input")?.click()}
       >
+        <File size={24} />
         <p>Drop files here or click to upload</p>
       </div>
       <input

@@ -1,4 +1,5 @@
 import React from "react";
+import { File } from "akar-icons";
 
 export function FileList({ files }: { files: FileList | null }) {
   return (
@@ -14,7 +15,10 @@ export function FileList({ files }: { files: FileList | null }) {
         {files &&
           Array.from(files).map((file) => (
             <tr key={file.name}>
-              <td>{file.name}</td>
+              <td>
+                <File className="icon" size={20} />
+                {file.name}
+              </td>
               <td>{(file.size / 1024).toFixed(2)} KB</td>
               <td>{file.type}</td>
             </tr>
