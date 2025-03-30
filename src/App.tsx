@@ -4,6 +4,11 @@ import { FileList } from "./FileList";
 import { File } from "akar-icons";
 
 function App() {
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const files = event.dataTransfer.files;
+    setFiles(files);
+  };
   const [files, setFiles] = React.useState<FileList | null>(null);
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFiles(event.target.files);
@@ -14,6 +19,10 @@ function App() {
       <div
         className="drop-zone"
         onClick={() => document.getElementById("file-input")?.click()}
+        onDrop={handleDrop}
+        onDragOver={(e) => {
+          e.preventDefault();
+        }}
       >
         <File size={24} />
         <p>Drop files here or click to upload</p>
