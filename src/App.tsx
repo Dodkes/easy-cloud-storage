@@ -11,7 +11,6 @@ function App() {
 
   return (
     <div className="container">
-      <h4>Dodkes cloud storage</h4>
       <div
         className="drop-zone"
         onClick={() => document.getElementById("file-input")?.click()}
@@ -27,7 +26,13 @@ function App() {
         multiple
         accept="image/*"
       />
-      <FileList files={files} />
+      {files && files.length && (
+        <>
+          <FileList files={files} />
+          <div className="files-count">{`${files.length} files selected.`}</div>
+          <button className="btn-upload">Upload</button>
+        </>
+      )}
     </div>
   );
 }
