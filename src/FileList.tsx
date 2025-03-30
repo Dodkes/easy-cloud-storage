@@ -29,8 +29,10 @@ export function FileList({ files }: { files: FileList | null }) {
             Array.from(files).map((file) => (
               <tr key={file.name}>
                 <td>
-                  <File className="icon" size={20} />
-                  {file.name}
+                  <div className="file-name-container">
+                    <File className="icon" size={20} />
+                    {file.name}
+                  </div>
                 </td>
                 <td>{calculateSize(file.size)}</td>
                 <td>{file.type}</td>

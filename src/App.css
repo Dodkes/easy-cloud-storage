@@ -63,6 +63,11 @@ td {
   font-size: 16px;
 }
 
+.file-name-container {
+  display: flex;
+  align-items: center;
+}
+
 .btn-upload {
   margin-top: 20px;
   width: 100%;
