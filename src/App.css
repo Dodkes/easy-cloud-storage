@@ -30,3 +30,19 @@ body {
     cursor: pointer;
   }
 }
+
+.file-list {
+  margin-top: 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  > thead {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+}
+
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
