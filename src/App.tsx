@@ -10,7 +10,7 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className="app-container">
       <div
         className="drop-zone"
         onClick={() => document.getElementById("file-input")?.click()}

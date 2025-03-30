@@ -17,7 +17,7 @@ export function FileList({ files }: { files: FileList | null }) {
   return (
     <div className="file-list-container">
       <table className="file-list">
-        <thead>
+        <thead className="file-list-head">
           <tr>
             <th>Name</th>
             <th>Size</th>
@@ -30,7 +30,7 @@ export function FileList({ files }: { files: FileList | null }) {
               <tr key={file.name}>
                 <td>
                   <div className="file-name-container">
-                    <File className="icon" size={20} />
+                    <File className="file-name-icon" size={20} />
                     {file.name}
                   </div>
                 </td>
