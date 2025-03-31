@@ -4,6 +4,7 @@ import { FileList } from "./FileList";
 import { calculateSize } from "./utils";
 import DropZone from "./DropZone";
 import InputFile from "./InputFile";
+import SubmitButton from "./SubmitButton";
 
 function App() {
   const [files, setFiles] = React.useState<FileList | null>(null);
@@ -27,7 +28,7 @@ function App() {
           <div className="files-count">{`${
             files.length
           } files selected. (${getTotalSize()})`}</div>
-          <button className="btn-upload">Upload</button>
+          <SubmitButton files={files} />
         </>
       )}
     </div>
