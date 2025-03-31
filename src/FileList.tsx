@@ -1,4 +1,3 @@
-import React from "react";
 import { File } from "akar-icons";
 import { calculateSize } from "./utils";
 

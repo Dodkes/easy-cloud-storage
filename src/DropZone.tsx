@@ -1,7 +1,11 @@
 import React from "react";
 import { File } from "akar-icons";
 
-export default function DropZone({ setFiles }) {
+export default function DropZone({
+  setFiles,
+}: {
+  setFiles: React.Dispatch<React.SetStateAction<FileList | null>>;
+}) {
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     event.currentTarget.classList.add("drag-over");
