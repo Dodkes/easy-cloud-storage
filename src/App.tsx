@@ -30,7 +30,7 @@ function App() {
           <div className="files-count">{`${
             files.length
           } files selected. (${getTotalSize()})`}</div>
-          <SubmitButton files={files} />
+          <SubmitButton files={files} setFiles={setFiles} />
         </>
       )}
     </div>
