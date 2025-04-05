@@ -7,6 +7,8 @@ export default function SubmitButton({
   files: FileList | null;
   setFiles: React.Dispatch<React.SetStateAction<FileList | null>>;
 }) {
+  const env = import.meta.env;
+
   const handleSubmit = async () => {
     if (!files) return;
 
@@ -16,7 +18,7 @@ export default function SubmitButton({
     });
 
     try {
-      const response = await fetch("http://localhost:8080/upload", {
+      const response = await fetch(`${env.VITE_SERVER}/upload`, {
         method: "POST",
         body: formData,
       });
