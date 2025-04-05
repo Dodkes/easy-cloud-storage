@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import React from "react";
 import { FileList } from "./FileList";
 import { calculateSize } from "./utils";

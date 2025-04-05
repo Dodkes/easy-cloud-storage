@@ -1,3 +1,4 @@
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 export default function SubmitButton({
@@ -7,10 +8,12 @@ export default function SubmitButton({
   files: FileList | null;
   setFiles: React.Dispatch<React.SetStateAction<FileList | null>>;
 }) {
+  const [isUploading, setIsUploading] = useState(false);
   const env = import.meta.env;
 
   const handleSubmit = async () => {
     if (!files) return;
+    setIsUploading(true);
 
     const formData = new FormData();
     Array.from(files).forEach((file) => {
@@ -32,12 +35,30 @@ export default function SubmitButton({
     } catch (error) {
       toast.error("An error occurred while uploading files.");
       console.error("Error uploading files:", error);
+    } finally {
+      setIsUploading(false);
     }
   };
 
+  const handleClear = () => {
+    setFiles(null);
+    toast.success("Files cleared.");
+  };
+
   return (
-    <button onClick={handleSubmit} className="btn-upload">
-      Upload
-    </button>
+    <>
+      <button
+        disabled={isUploading}
+        onClick={handleSubmit}
+        className="btn-upload"
+      >
+        {isUploading ? "Uploading" : "Upload"}
+      </button>
+      {!isUploading && (
+        <button onClick={handleClear} className="btn-clear">
+          Clear
+        </button>
+      )}
+    </>
   );
 }
