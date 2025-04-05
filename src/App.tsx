@@ -5,6 +5,7 @@ import { calculateSize } from "./utils";
 import DropZone from "./DropZone";
 import InputFile from "./InputFile";
 import SubmitButton from "./SubmitButton";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [files, setFiles] = React.useState<FileList | null>(null);
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <Toaster />
       <DropZone setFiles={setFiles} />
       <InputFile setFiles={setFiles} />
       {files && files.length && (
