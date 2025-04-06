@@ -1,16 +1,20 @@
 import express from "express";
 import cors from "cors";
 import multer from "multer";
+import fs from "fs";
 const app = express();
 const PORT = 8080;
-
 app.use(cors());
-
-const uploadDir = "storage";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, uploadDir);
+    const uploadDestination = `storage/${req.body.folderName}` ?? `storage`;
+
+    if (!fs.existsSync(uploadDestination)) {
+      fs.mkdirSync(uploadDestination);
+    }
+
+    cb(null, uploadDestination);
   },
 
   filename: (req, file, cb) => {
@@ -22,7 +26,6 @@ const upload = multer({ storage: storage });
 
 app.post("/upload", upload.array("files"), async (req, res) => {
   res.sendStatus(200);
-  console.log("Received a request");
 });
 
 app.listen(PORT, () => {

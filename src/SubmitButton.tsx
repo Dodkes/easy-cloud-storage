@@ -3,10 +3,14 @@ import toast from "react-hot-toast";
 
 export default function SubmitButton({
   files,
+  folderName,
   setFiles,
+  setFolderName,
 }: {
   files: FileList | null;
+  folderName: string;
   setFiles: React.Dispatch<React.SetStateAction<FileList | null>>;
+  setFolderName: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const [isUploading, setIsUploading] = useState(false);
   const env = import.meta.env;
@@ -16,6 +20,10 @@ export default function SubmitButton({
     setIsUploading(true);
 
     const formData = new FormData();
+    if (typeof folderName === "string" && folderName.trim() !== "") {
+      formData.append("folderName", folderName.trim());
+    }
+
     Array.from(files).forEach((file) => {
       formData.append("files", file);
     });
@@ -28,7 +36,7 @@ export default function SubmitButton({
 
       if (response.ok) {
         toast.success("Files uploaded successfully!");
-        setFiles(null); // Clear the files after successful upload
+        setFiles(null);
       } else {
         toast.error("Failed to upload files.");
       }
@@ -37,6 +45,7 @@ export default function SubmitButton({
       console.error("Error uploading files:", error);
     } finally {
       setIsUploading(false);
+      setFolderName("");
     }
   };
 
