@@ -2,6 +2,8 @@
 
 Provides nice UI/UX to store/backup your data to remote device.
 
+![alt text](assets/UI_Example.png)
+
 ## Overview
 
 ![./docs/flow.svg](./docs/flow.svg)
