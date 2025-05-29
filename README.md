@@ -23,7 +23,7 @@ npm run dev
 ### Server:
 
 ```sh
-nodemon server.js
+npx ts-node src/server/server.ts
 ```
 
 To reset storage (delete all):
