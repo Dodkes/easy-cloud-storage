@@ -8,7 +8,7 @@ app.use(cors());
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const uploadDestination = `storage/${req.body.folderName}` ?? `storage`;
+    const uploadDestination = req.body.folderName ? `storage/${req.body.folderName}` : `storage`;
 
     if (!fs.existsSync(uploadDestination)) {
       fs.mkdirSync(uploadDestination);
